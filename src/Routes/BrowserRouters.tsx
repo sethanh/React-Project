@@ -2,14 +2,17 @@ import {
     createBrowserRouter,
 } from "react-router-dom";
 
-import Root from "@Routes/Root";
-import Contact  from "./Contact";
-import { ErrorPage } from "@Pages/index";
+import Contact from "./Contact";
+import { ErrorPage, Home } from "@Pages/index";
+import { HomeLoader } from '@Pages/Home'
 
 const routers = createBrowserRouter([
     {
         path: "/",
-        element: <Root />,
+        element: <Home />,
+        loader: async () => {
+            return HomeLoader.data;
+        },
         errorElement: <ErrorPage />,
     },
     {
